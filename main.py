@@ -8,7 +8,7 @@ app = FastAPI()
  
 @app.get("/category/{category}")
 async def category(category: str) -> List[Vehicule]:
-    return [category for category in Categories if category.category == category ]
+    return []
 
 @app.get("/owner/{owner}")
 async def owner(owner: str) -> List[Vehicule]:

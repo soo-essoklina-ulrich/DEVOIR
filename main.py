@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from models import Vehicule, Proprio, vehicules, Categories
 from typing import List
+from db import Session
 
 
 app = FastAPI()
@@ -29,3 +30,10 @@ async def bills(owner: str) -> List[Proprio]:
             )
             bills.append(bill)
     return bills
+
+def get_db():
+    db = Session()
+    try:
+        yield db
+    finally:
+        db.close()

@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-
+from pydantic import BaseModel, constr
 
 
 # classe des vehicules
@@ -9,22 +8,24 @@ class Vehicule(BaseModel):
     category: str
     cotation: float
     facture: float
+    class config:
+        orm_mode = True
 
 
-
-#class du proprietaire
+# class du proprietaire
 class Proprio(BaseModel):
     immatricule: str
     owner: str
     cotation: float
     facture: float
     total: float
-
+    class config:
+        orm_mode = True
 
 Categories = [
     Vehicule(immatricule="", owner="", category="", cotation=0.0, facture=0.0),
     Vehicule(immatricule="", owner="", category="", cotation=0.0, facture=0.0),
-    
+
 ]
 vehicules = [
     Vehicule(immatricule="1-ABC-123", owner="Jean ", category="Voiture", cotation=100.0, facture=1000.0),
